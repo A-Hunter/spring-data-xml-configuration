@@ -37,18 +37,26 @@ public class Application {
 //        bs.forEach(System.out::println);
 
         // save
-        Book newBook = new Book();
-        newBook.setTitle("A new book");
-        newBook.setPublishDate(new Date());
-        newBook.setPageCount(500);
-        newBook.setPrice(BigDecimal.valueOf(8.500));
-        repo.save(newBook);
-        List<Book> all = repo.findAll();
-        all.forEach(System.out::println);
+//        Book newBook = new Book();
+//        newBook.setTitle("A new book");
+//        newBook.setPublishDate(new Date());
+//        newBook.setPageCount(500);
+//        newBook.setPrice(BigDecimal.valueOf(8.500));
+//        repo.save(newBook);
+//        List<Book> all = repo.findAll();
+//        all.forEach(System.out::println);
+//
+//        List<Book> books = BookUtils.createBooks(5);
+//        repo.save(books);
+//        List<Book> bookList = repo.findAll();
+//        bookList.forEach(System.out::println);
 
-        List<Book> books = BookUtils.createBooks(5);
-        repo.save(books);
-        List<Book> bookList = repo.findAll();
-        bookList.forEach(System.out::println);
+        // update
+        Book book = repo.findOne(2L);
+        book.setTitle("This is a new title");
+        repo.save(book);
+        List<Book> books = repo.findAll();
+        books.forEach(System.out::println);
+
     }
 }
