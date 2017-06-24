@@ -1,10 +1,14 @@
 package com.spring.data;
 
+import com.spring.data.date.comparaisons.DerivedQueriesDateComparisonsBookRepository;
 import com.spring.data.derived.queries.DerivedQueriesBookRepository;
 import com.spring.data.logical.operators.DerivedQueriesLogicalOperatorsBookRepository;
 import com.spring.data.relational.operators.DerivedQueriesRelationalOperatorsBookRepository;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 
@@ -97,10 +101,26 @@ public class Application {
 //        books.forEach(System.out::println);
 
         // Derived Queries : Logical Operators
-        DerivedQueriesLogicalOperatorsBookRepository r = context.getBean(DerivedQueriesLogicalOperatorsBookRepository.class);
+//        DerivedQueriesLogicalOperatorsBookRepository r = context.getBean(DerivedQueriesLogicalOperatorsBookRepository.class);
 //        List<Book> books = r.findByTitleContainingOrTitleContaining("A", "That");
 //        List<Book> books = r.findByTitleContainingAndPageCountGreaterThan("That", 500);
-        List<Book> books = r.findByTitleNot("That book");
+//        List<Book> books = r.findByTitleNot("That book");
+//        books.forEach(System.out::println);
+
+        // Derived Queries : Date Comparisons
+        DerivedQueriesDateComparisonsBookRepository rep = context.getBean(DerivedQueriesDateComparisonsBookRepository.class);
+        Date date1 = null;
+        Date date2 = null;
+        try {
+            date1 = new SimpleDateFormat("yyyy-MM-dd").parse("2005-01-01");
+            date2 = new SimpleDateFormat("yyyy-MM-dd").parse("2003-01-01");
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+//        List<Book> books = rep.findByPublishDate(date1);
+//        List<Book> books = rep.findByPublishDateAfter(date2);
+//        List<Book> books = rep.findByPublishDateBefore(date2);
+        List<Book> books = rep.findByPublishDateBetween(date2, date1);
         books.forEach(System.out::println);
 
     }
