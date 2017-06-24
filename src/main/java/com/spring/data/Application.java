@@ -1,5 +1,6 @@
 package com.spring.data;
 
+import com.spring.data.derived.queries.DerivedQueriesBookRepository;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.List;
@@ -68,12 +69,17 @@ public class Application {
 //        List<Book> books = repo.findAll();
 //        books.forEach(System.out::println);
 
-        CustomBookRepository rep = context.getBean(CustomBookRepository.class);
-        Book book = (Book) rep.findOne(1L);
-        System.out.println(book);
+        // Custom Repository
+//        CustomBookRepository rep = context.getBean(CustomBookRepository.class);
+//        Book book = (Book) rep.findOne(1L);
+//        System.out.println(book);
+//
+//        List<Book> bookList = (List<Book>) rep.findAll();
+//        bookList.forEach(System.out::println);
 
-        List<Book> bookList = (List<Book>) rep.findAll();
-        bookList.forEach(System.out::println);
-
+        // Derived Queries
+        DerivedQueriesBookRepository derivedQueriesBookRepository = context.getBean(DerivedQueriesBookRepository.class);
+        List<Book> b = (List<Book>) derivedQueriesBookRepository.findByTitle("That book");
+        b.forEach(System.out::println);
     }
 }
