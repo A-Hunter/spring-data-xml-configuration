@@ -13,14 +13,14 @@ import java.util.Date;
 public class Book {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "book_id")
     private Long bookId;
 
     @Column(name = "title")
     private String title;
 
-    @Temporal(TemporalType.DATE)
+//    @Temporal(TemporalType.DATE)
     @Column(name = "publish_date")
     private Date publishDate;
 
