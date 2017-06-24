@@ -3,3 +3,5 @@ insert into book(book_id, title, publish_date, page_count, price) values (2, 'A 
 insert into book(book_id, title, publish_date, page_count, price) values (3, 'A book','2003-01-01',300,9.500)
 insert into book(book_id, title, publish_date, page_count, price) values (4, 'A book about itself','2004-01-01',400,20.500)
 insert into book(book_id, title, publish_date, page_count, price) values (5, 'That book','2005-01-01',550,11.500)
+insert into book(book_id, title, publish_date, page_count, price) values (6, 'That book','2005-01-01',550,11.500)
+insert into book(book_id, title, publish_date, page_count, price) values (7, 'That book','2005-01-01',550,11.500)

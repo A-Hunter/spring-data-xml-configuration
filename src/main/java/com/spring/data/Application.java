@@ -1,11 +1,8 @@
 package com.spring.data;
 
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 
@@ -52,9 +49,23 @@ public class Application {
 //        bookList.forEach(System.out::println);
 
         // update
-        Book book = repo.findOne(2L);
-        book.setTitle("This is a new title");
-        repo.save(book);
+//        Book book = repo.findOne(2L);
+//        book.setTitle("This is a new title");
+//        repo.save(book);
+//        List<Book> books = repo.findAll();
+//        books.forEach(System.out::println);
+
+        // delete
+        repo.delete(1L);
+        repo.delete(repo.findOne(3L));
+        repo.delete(repo.findAll(new ArrayList<Long>(){{
+            add(4L);
+            add(5L);
+        }}));
+        repo.deleteInBatch(repo.findAll(new ArrayList<Long>(){{
+            add(6L);
+            add(7L);
+        }})); // deleting in a single query
         List<Book> books = repo.findAll();
         books.forEach(System.out::println);
 
