@@ -1,6 +1,7 @@
 package com.spring.data;
 
 import com.spring.data.derived.queries.DerivedQueriesBookRepository;
+import com.spring.data.relational.operators.DerivedQueriesRelationalOperatorsBookRepository;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.List;
@@ -83,7 +84,16 @@ public class Application {
 //        List<Book> b = derivedQueriesBookRepository.findByTitleContaining("That book");
 //        List<Book> b = derivedQueriesBookRepository.findByTitleStartingWith("That");
 //        List<Book> b = derivedQueriesBookRepository.findByTitleEndingWith("book");
-        List<Book> b = derivedQueriesBookRepository.findByTitleIgnoreCase("That book");
-        b.forEach(System.out::println);
+//        List<Book> b = derivedQueriesBookRepository.findByTitleIgnoreCase("That book");
+//        b.forEach(System.out::println);
+
+        // Derived Queries : Relational Operators
+        DerivedQueriesRelationalOperatorsBookRepository rep = context.getBean(DerivedQueriesRelationalOperatorsBookRepository.class);
+//        List<Book> books = rep.findByPageCountEquals(200);
+//        List<Book> books = rep.findByPageCountGreaterThan(300);
+//        List<Book> books = rep.findByPageCountLessThan(300);
+        List<Book> books = rep.findByPageCountBetween(200,300);
+        books.forEach(System.out::println);
+
     }
 }
