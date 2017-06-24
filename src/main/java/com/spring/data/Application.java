@@ -2,7 +2,6 @@ package com.spring.data;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -56,18 +55,25 @@ public class Application {
 //        books.forEach(System.out::println);
 
         // delete
-        repo.delete(1L);
-        repo.delete(repo.findOne(3L));
-        repo.delete(repo.findAll(new ArrayList<Long>(){{
-            add(4L);
-            add(5L);
-        }}));
-        repo.deleteInBatch(repo.findAll(new ArrayList<Long>(){{
-            add(6L);
-            add(7L);
-        }})); // deleting in a single query
-        List<Book> books = repo.findAll();
-        books.forEach(System.out::println);
+//        repo.delete(1L);
+//        repo.delete(repo.findOne(3L));
+//        repo.delete(repo.findAll(new ArrayList<Long>(){{
+//            add(4L);
+//            add(5L);
+//        }}));
+//        repo.deleteInBatch(repo.findAll(new ArrayList<Long>(){{
+//            add(6L);
+//            add(7L);
+//        }})); // deleting in a single query
+//        List<Book> books = repo.findAll();
+//        books.forEach(System.out::println);
+
+        CustomBookRepository rep = context.getBean(CustomBookRepository.class);
+        Book book = (Book) rep.findOne(1L);
+        System.out.println(book);
+
+        List<Book> bookList = (List<Book>) rep.findAll();
+        bookList.forEach(System.out::println);
 
     }
 }
