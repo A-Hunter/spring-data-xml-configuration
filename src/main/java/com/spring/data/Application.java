@@ -79,7 +79,11 @@ public class Application {
 
         // Derived Queries
         DerivedQueriesBookRepository derivedQueriesBookRepository = context.getBean(DerivedQueriesBookRepository.class);
-        List<Book> b = (List<Book>) derivedQueriesBookRepository.findByTitle("That book");
+//        List<Book> b = derivedQueriesBookRepository.findByTitleLike("That book");
+//        List<Book> b = derivedQueriesBookRepository.findByTitleContaining("That book");
+//        List<Book> b = derivedQueriesBookRepository.findByTitleStartingWith("That");
+//        List<Book> b = derivedQueriesBookRepository.findByTitleEndingWith("book");
+        List<Book> b = derivedQueriesBookRepository.findByTitleIgnoreCase("That book");
         b.forEach(System.out::println);
     }
 }

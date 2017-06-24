@@ -12,7 +12,15 @@ import java.util.List;
 @Repository
 public interface DerivedQueriesBookRepository extends JpaRepository<Book, Long> {
 
-//    Book findByTitle(String Title);
+    Book findByTitle(String Title);
 
-    List<Book> findByTitle(String title);
+    List<Book> findByTitleLike(String title);
+
+    List<Book> findByTitleContaining(String title);
+
+    List<Book> findByTitleStartingWith(String title);
+
+    List<Book> findByTitleEndingWith(String title);
+
+    List<Book> findByTitleIgnoreCase(String title);
 }
