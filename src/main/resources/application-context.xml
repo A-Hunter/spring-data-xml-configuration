@@ -14,7 +14,7 @@
 
     <context:component-scan base-package="com.spring.data"/>
 
-    <jpa:repositories base-package="com.spring.data"/>
+    <jpa:repositories base-package="com.spring.data" base-class="com.spring.data.customs.base.repository.ExtendedBookRepository" />
 
     <tx:annotation-driven/>
 

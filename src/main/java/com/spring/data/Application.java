@@ -1,5 +1,6 @@
 package com.spring.data;
 
+import com.spring.data.customs.base.repository.CustomizedBookRepository;
 import com.spring.data.derived.queries.DerivedQueriesBookRepository;
 import com.spring.data.named.queries.MockBook;
 import com.spring.data.named.queries.NamedQueriesBookRepository;
@@ -88,7 +89,7 @@ public class Application {
 //        bookList.forEach(System.out::println);
 
         // Derived Queries
-        DerivedQueriesBookRepository derivedQueriesBookRepository = context.getBean(DerivedQueriesBookRepository.class);
+//        DerivedQueriesBookRepository derivedQueriesBookRepository = context.getBean(DerivedQueriesBookRepository.class);
 //        List<Book> b = derivedQueriesBookRepository.findByTitleLike("That book");
 //        List<Book> b = derivedQueriesBookRepository.findByTitleContaining("That book");
 //        List<Book> b = derivedQueriesBookRepository.findByTitleStartingWith("That");
@@ -170,11 +171,16 @@ public class Application {
 //        books.forEach(System.out::println);
 
         // Query method return types
-        QueryMethodReturnTypesBookRepository rep = context.getBean(QueryMethodReturnTypesBookRepository.class);
+//        QueryMethodReturnTypesBookRepository rep = context.getBean(QueryMethodReturnTypesBookRepository.class);
 //        Collection<MockBook> books = rep.findByPageCountGreaterThan(300, new Sort(Sort.Direction.ASC, "price"));
 //        Iterable<MockBook> books = rep.findByPageCountLessThan(300, new Sort(Sort.Direction.ASC, "price"));
 //        Page<MockBook> books = rep.findByPageCountBetween(100, 500, new PageRequest(0,2));
-        Slice<MockBook> books = rep.findByPageCountGreaterThan(300, new PageRequest(0, 3));
+//        Slice<MockBook> books = rep.findByPageCountGreaterThan(300, new PageRequest(0, 3));
+//        books.forEach(System.out::println);
+
+        // Custom Book Repository
+        CustomizedBookRepository rep = context.getBean(CustomizedBookRepository.class);
+        List<Book> books = rep.findByIds(2L, 5L);
         books.forEach(System.out::println);
     }
 }
