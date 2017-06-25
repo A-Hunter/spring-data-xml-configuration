@@ -1,10 +1,12 @@
 package com.spring.data;
 
+import com.spring.data.derived.queries.DerivedQueriesBookRepository;
 import com.spring.data.named.queries.MockBook;
 import com.spring.data.named.queries.NamedQueriesBookRepository;
-import com.spring.data.query.annotations.QueryAnnotationBookRepository;
-import com.spring.data.derived.queries.DerivedQueriesBookRepository;
+import com.spring.data.paging.results.PagingResultsBookRepository;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 
 import java.util.List;
 
@@ -144,6 +146,10 @@ public class Application {
 //        List<MockBook> books = rep.queryThree("That book");
 //        books.forEach(System.out::println);
 
-
+        // Paging Results
+        PagingResultsBookRepository rep = context.getBean(PagingResultsBookRepository.class);
+//        Page<MockBook> books = rep.findAll(new PageRequest(0, 3));
+        List<MockBook> books = rep.findByPageCountGreaterThan(300, new PageRequest(0, 2));
+        books.forEach(System.out::println);
     }
 }
