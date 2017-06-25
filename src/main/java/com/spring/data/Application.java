@@ -4,9 +4,11 @@ import com.spring.data.derived.queries.DerivedQueriesBookRepository;
 import com.spring.data.named.queries.MockBook;
 import com.spring.data.named.queries.NamedQueriesBookRepository;
 import com.spring.data.paging.results.PagingResultsBookRepository;
+import com.spring.data.sorting.results.SortingResultsBookRepository;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 
 import java.util.List;
 
@@ -147,9 +149,21 @@ public class Application {
 //        books.forEach(System.out::println);
 
         // Paging Results
-        PagingResultsBookRepository rep = context.getBean(PagingResultsBookRepository.class);
+//        PagingResultsBookRepository rep = context.getBean(PagingResultsBookRepository.class);
 //        Page<MockBook> books = rep.findAll(new PageRequest(0, 3));
-        List<MockBook> books = rep.findByPageCountGreaterThan(300, new PageRequest(0, 2));
+//        List<MockBook> books = rep.findByPageCountGreaterThan(300, new PageRequest(0, 2));
+//        books.forEach(System.out::println);
+
+        // Sorting Results
+        SortingResultsBookRepository rep = context.getBean(SortingResultsBookRepository.class);
+//        List<MockBook> books = rep.findAll(new Sort("price"));
+//        List<MockBook> books = rep.findAll(new Sort(Sort.Direction.ASC,"price"));
+//        List<MockBook> books = rep.findAll(new Sort(Sort.Direction.DESC,"price"));
+//        List<MockBook> books = rep.findAll(new Sort(Sort.Direction.DESC, "publishDate","price"));
+//        List<MockBook> books = rep.findAll(new Sort(Sort.Direction.DESC, "publishDate")
+//                                        .and(new Sort(Sort.Direction.DESC,"price")));
+        List<MockBook> books = rep.findByPageCountGreaterThan(300, new Sort(Sort.Direction.ASC, "price"));
+//        List<MockBook> books = rep.findByPageCountGreaterThan(300, new PageRequest(0, 2));
         books.forEach(System.out::println);
     }
 }
