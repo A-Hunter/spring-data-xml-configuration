@@ -14,4 +14,11 @@ public interface DerivedQueriesOrderingResultsBookRepository extends JpaReposito
 
     List<Book> findByTitleContainingOrderByTitleAsc(String title);
     List<Book> findByTitleContainingOrderByTitleDesc(String title);
+
+    List<Book> findTopByOrderByPageCountDesc();
+    // The same as : Top or First :
+    List<Book> findFirstByOrderByPageCountAsc();
+
+    List<Book> findTop5ByOrderByPriceDesc();
+    List<Book> findTop5ByTitleOrderByPriceAsc(String title);
 }

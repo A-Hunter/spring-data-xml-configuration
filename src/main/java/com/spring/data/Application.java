@@ -127,7 +127,11 @@ public class Application {
         // Derived Queries : Ordering results
         DerivedQueriesOrderingResultsBookRepository rep = context.getBean(DerivedQueriesOrderingResultsBookRepository.class);
 //        List<Book> books = rep.findByTitleContainingOrderByTitleAsc("A");
-        List<Book> books = rep.findByTitleContainingOrderByTitleDesc("A");
+//        List<Book> books = rep.findByTitleContainingOrderByTitleAsc("A");
+//        List<Book> books = rep.findFirstByOrderByPageCountAsc();
+//        List<Book> books = rep.findTop5ByOrderByPriceDesc();
+//        List<Book> books = rep.findTop5ByTitleOrderByPriceAsc("That book");
+        List<Book> books = rep.findTopByOrderByPageCountDesc();
         books.forEach(System.out::println);
     }
 }
