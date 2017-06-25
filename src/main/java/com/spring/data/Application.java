@@ -1,6 +1,8 @@
 package com.spring.data;
 
 import com.spring.data.customs.asynchronous.queries.AsynchronousCustomizedBookRepository;
+import com.spring.data.customs.auditing.FakeBook;
+import com.spring.data.customs.auditing.FakeBookRepository;
 import com.spring.data.customs.base.repository.CustomizedBookRepository;
 import com.spring.data.derived.queries.DerivedQueriesBookRepository;
 import com.spring.data.named.queries.MockBook;
@@ -185,8 +187,14 @@ public class Application {
 //        books.forEach(System.out::println);
 
         // Asynchronous Customized Book Repository
-        AsynchronousCustomizedBookRepository rep = context.getBean(AsynchronousCustomizedBookRepository.class);
-        List<Book> books = rep.findByIds(3L, 6L);
-        books.forEach(System.out::println);
+//        AsynchronousCustomizedBookRepository rep = context.getBean(AsynchronousCustomizedBookRepository.class);
+//        List<Book> books = rep.findByIds(3L, 6L);
+//        books.forEach(System.out::println);
+
+        // Auditing
+        FakeBookRepository rep = context.getBean(FakeBookRepository.class);
+        FakeBook book = new FakeBook();
+        rep.save(book);
+        System.out.println(rep.findOne(book.getBookId()));
     }
 }
