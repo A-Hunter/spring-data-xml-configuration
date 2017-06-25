@@ -3,6 +3,7 @@ package com.spring.data;
 import com.spring.data.date.comparaisons.DerivedQueriesDateComparisonsBookRepository;
 import com.spring.data.derived.queries.DerivedQueriesBookRepository;
 import com.spring.data.logical.operators.DerivedQueriesLogicalOperatorsBookRepository;
+import com.spring.data.ordering.results.DerivedQueriesOrderingResultsBookRepository;
 import com.spring.data.relational.operators.DerivedQueriesRelationalOperatorsBookRepository;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -108,20 +109,25 @@ public class Application {
 //        books.forEach(System.out::println);
 
         // Derived Queries : Date Comparisons
-        DerivedQueriesDateComparisonsBookRepository rep = context.getBean(DerivedQueriesDateComparisonsBookRepository.class);
-        Date date1 = null;
-        Date date2 = null;
-        try {
-            date1 = new SimpleDateFormat("yyyy-MM-dd").parse("2005-01-01");
-            date2 = new SimpleDateFormat("yyyy-MM-dd").parse("2003-01-01");
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+//        DerivedQueriesDateComparisonsBookRepository rep = context.getBean(DerivedQueriesDateComparisonsBookRepository.class);
+//        Date date1 = null;
+//        Date date2 = null;
+//        try {
+//            date1 = new SimpleDateFormat("yyyy-MM-dd").parse("2005-01-01");
+//            date2 = new SimpleDateFormat("yyyy-MM-dd").parse("2003-01-01");
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
 //        List<Book> books = rep.findByPublishDate(date1);
 //        List<Book> books = rep.findByPublishDateAfter(date2);
 //        List<Book> books = rep.findByPublishDateBefore(date2);
-        List<Book> books = rep.findByPublishDateBetween(date2, date1);
-        books.forEach(System.out::println);
+//        List<Book> books = rep.findByPublishDateBetween(date2, date1);
+//        books.forEach(System.out::println);
 
+        // Derived Queries : Ordering results
+        DerivedQueriesOrderingResultsBookRepository rep = context.getBean(DerivedQueriesOrderingResultsBookRepository.class);
+//        List<Book> books = rep.findByTitleContainingOrderByTitleAsc("A");
+        List<Book> books = rep.findByTitleContainingOrderByTitleDesc("A");
+        books.forEach(System.out::println);
     }
 }
