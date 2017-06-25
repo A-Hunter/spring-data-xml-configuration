@@ -4,6 +4,7 @@ import com.spring.data.customs.asynchronous.queries.AsynchronousCustomizedBookRe
 import com.spring.data.customs.auditing.FakeBook;
 import com.spring.data.customs.auditing.FakeBookRepository;
 import com.spring.data.customs.base.repository.CustomizedBookRepository;
+import com.spring.data.customs.modifying.queries.FakeBaseRepository;
 import com.spring.data.derived.queries.DerivedQueriesBookRepository;
 import com.spring.data.named.queries.MockBook;
 import com.spring.data.named.queries.NamedQueriesBookRepository;
@@ -192,9 +193,16 @@ public class Application {
 //        books.forEach(System.out::println);
 
         // Auditing
-        FakeBookRepository rep = context.getBean(FakeBookRepository.class);
-        FakeBook book = new FakeBook();
-        rep.save(book);
-        System.out.println(rep.findOne(book.getBookId()));
+//        FakeBookRepository rep = context.getBean(FakeBookRepository.class);
+//        FakeBook book = new FakeBook();
+//        rep.save(book);
+//        System.out.println(rep.findOne(book.getBookId()));
+
+        // Modifying queries
+        FakeBaseRepository rep = context.getBean(FakeBaseRepository.class);
+//        System.out.println(rep.setPageCount("That book", 450));
+        System.out.println(rep.setPageCount("%book%", 450));
+        List<FakeBook> books = rep.findAll();
+        books.forEach(System.out::println);
     }
 }
