@@ -1,16 +1,11 @@
 package com.spring.data;
 
-import com.spring.data.annotations.QueryAnnotationBookRepository;
-import com.spring.data.date.comparaisons.DerivedQueriesDateComparisonsBookRepository;
+import com.spring.data.named.queries.MockBook;
+import com.spring.data.named.queries.NamedQueriesBookRepository;
+import com.spring.data.query.annotations.QueryAnnotationBookRepository;
 import com.spring.data.derived.queries.DerivedQueriesBookRepository;
-import com.spring.data.logical.operators.DerivedQueriesLogicalOperatorsBookRepository;
-import com.spring.data.ordering.results.DerivedQueriesOrderingResultsBookRepository;
-import com.spring.data.relational.operators.DerivedQueriesRelationalOperatorsBookRepository;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 
@@ -136,10 +131,19 @@ public class Application {
 //        books.forEach(System.out::println);
 
         // Query annotations
-        QueryAnnotationBookRepository rep = context.getBean(QueryAnnotationBookRepository.class);
+//        QueryAnnotationBookRepository rep = context.getBean(QueryAnnotationBookRepository.class);
 //        List<Book> books = rep.queryOne();
 //        List<Book> books = rep.queryTwo(300);
-        List<Book> books = rep.queryThree("That book");
-        books.forEach(System.out::println);
+//        List<Book> books = rep.queryThree("That book");
+//        books.forEach(System.out::println);
+
+        // Named queries
+//        NamedQueriesBookRepository rep = context.getBean(NamedQueriesBookRepository.class);
+//        List<MockBook> books = rep.queryOne();
+//        List<MockBook> books = rep.queryTwo(300);
+//        List<MockBook> books = rep.queryThree("That book");
+//        books.forEach(System.out::println);
+
+
     }
 }

@@ -1,4 +1,4 @@
-package com.spring.data.annotations;
+package com.spring.data.query.annotations;
 
 import com.spring.data.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
