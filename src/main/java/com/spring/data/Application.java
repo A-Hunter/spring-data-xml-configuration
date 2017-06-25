@@ -1,5 +1,6 @@
 package com.spring.data;
 
+import com.spring.data.annotations.QueryAnnotationBookRepository;
 import com.spring.data.date.comparaisons.DerivedQueriesDateComparisonsBookRepository;
 import com.spring.data.derived.queries.DerivedQueriesBookRepository;
 import com.spring.data.logical.operators.DerivedQueriesLogicalOperatorsBookRepository;
@@ -125,13 +126,20 @@ public class Application {
 //        books.forEach(System.out::println);
 
         // Derived Queries : Ordering results
-        DerivedQueriesOrderingResultsBookRepository rep = context.getBean(DerivedQueriesOrderingResultsBookRepository.class);
+//        DerivedQueriesOrderingResultsBookRepository rep = context.getBean(DerivedQueriesOrderingResultsBookRepository.class);
 //        List<Book> books = rep.findByTitleContainingOrderByTitleAsc("A");
 //        List<Book> books = rep.findByTitleContainingOrderByTitleAsc("A");
 //        List<Book> books = rep.findFirstByOrderByPageCountAsc();
 //        List<Book> books = rep.findTop5ByOrderByPriceDesc();
 //        List<Book> books = rep.findTop5ByTitleOrderByPriceAsc("That book");
-        List<Book> books = rep.findTopByOrderByPageCountDesc();
+//        List<Book> books = rep.findTopByOrderByPageCountDesc();
+//        books.forEach(System.out::println);
+
+        // Query annotations
+        QueryAnnotationBookRepository rep = context.getBean(QueryAnnotationBookRepository.class);
+//        List<Book> books = rep.queryOne();
+//        List<Book> books = rep.queryTwo(300);
+        List<Book> books = rep.queryThree("That book");
         books.forEach(System.out::println);
     }
 }
